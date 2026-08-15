@@ -2,6 +2,7 @@
  Practice 1  Formal Languages
 # Made by:
 - Carlos Mario Monsalve Tangarife
+- Daniel Felipe Serna Medina
 
 # Class number: Lenguajes formales - C2666 - SI2002 - 4855
 
