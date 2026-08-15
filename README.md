@@ -11,21 +11,49 @@
 
 ## How to run
 
-1. Compile:
+The execution flow that was verified successfully in this environment is the standard PowerShell form using an input file:
 
-```bash
+```powershell
 javac Practice.java
+Get-Content .\input.txt | java Practice
 ```
 
-2. Run, providing the input via stdin redirection from a file:
+This is the recommended way for Windows PowerShell in this project.
 
-```bash
+### Why not the here-string form?
+
+The syntax using `@' ... '@` can work as a manual workaround when pasting the full input directly in the terminal, but it is not the normal execution flow and it is not the recommended method for this project. It is only useful as a temporary workaround for manual testing.
+
+### Option 1: input from a file
+
+```powershell
+javac Practice.java
+Get-Content .\input.txt | java Practice
+```
+
+### Option 2: direct terminal input
+
+You can also run the program directly and type the input manually, but the reliable and tested method for this environment is the file-based version above:
+
+```powershell
+javac Practice.java
+java Practice
+```
+
+Then paste the input in the terminal.
+
+### Command Prompt alternative
+
+```cmd
+javac Practice.java
 java Practice < input.txt
 ```
 
-Alternatively, input can be typed manually into the terminal after running `java Practice`, or in case you're using Visual Studio Code, you may press `Run Java`.
+### Important
 
-3. Output is printed to stdout: for each test case, one line containing the equivalent state pairs in lexicographical order, formatted as `(i, j) (k, l) ...`.
+- The project has been validated with `Get-Content .\input.txt | java Practice`.
+- The `@' ... '@` form is only a manual workaround and should not be described as the regular way to run the program.
+- The output is printed to stdout: for each test case, one line containing the equivalent state pairs in lexicographical order, formatted as `(i, j) (k, l) ...`.
 
 ## Algorithm
 

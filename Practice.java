@@ -3,22 +3,25 @@ import java.util.Scanner;
 public class Practice {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        StringBuilder salidaTotal = new StringBuilder();
+
+        if (!sc.hasNextInt()) {
+            sc.close();
+            return;
+        }
 
         int casos = sc.nextInt();
-        sc.nextLine(); // Consumir resto de la línea de "casos"
+        sc.nextLine();
 
         for (int caso = 0; caso < casos; caso++) {
+            int n = sc.nextInt();
+            sc.nextLine();
 
-            int n = sc.nextInt(); // Estados
-            sc.nextLine(); // Consumir resto de la línea de "n"
-
-            // Alfabeto (tamaño variable)
             String[] alfabeto = sc.nextLine().trim().split("\\s+");
             int m = alfabeto.length;
 
             boolean[] finales = new boolean[n];
 
-            // Finales
             String lineaFinales = sc.nextLine().trim();
             if (!lineaFinales.isEmpty()) {
                 String[] estadosFinales = lineaFinales.split("\\s+");
@@ -28,7 +31,6 @@ public class Practice {
                 }
             }
 
-            // ransiciones
             int[][] transiciones = new int[n][m];
 
             for (int i = 0; i < n; i++) {
@@ -37,12 +39,13 @@ public class Practice {
                     transiciones[i][j] = sc.nextInt();
                 }
             }
-            sc.nextLine(); // Consumir el salto de línea tras la última transición
 
-            // Marcados
+            if (sc.hasNextLine()) {
+                sc.nextLine();
+            }
+
             boolean[][] marcados = new boolean[n][n];
 
-            // Primera pasada
             for (int i = 0; i < n; i++) {
                 for (int j = i + 1; j < n; j++) {
                     if (finales[i] != finales[j]) {
@@ -51,7 +54,6 @@ public class Practice {
                 }
             }
 
-            // Fases^2
             boolean cambio = true;
 
             while (cambio) {
@@ -59,13 +61,11 @@ public class Practice {
 
                 for (int i = 0; i < n; i++) {
                     for (int j = i + 1; j < n; j++) {
-
                         if (marcados[i][j]) {
                             continue;
                         }
 
                         for (int k = 0; k < m; k++) {
-
                             int destinoI = transiciones[i][k];
                             int destinoJ = transiciones[j][k];
 
@@ -82,24 +82,25 @@ public class Practice {
                 }
             }
 
-            // Imprimir pares equivalentes
+            StringBuilder lineaSalida = new StringBuilder();
             boolean primero = true;
 
             for (int i = 0; i < n; i++) {
                 for (int j = i + 1; j < n; j++) {
                     if (!marcados[i][j]) {
                         if (!primero) {
-                            System.out.print(" ");
+                            lineaSalida.append(" ");
                         }
-                        System.out.print("(" + i + ", " + j + ")");
+                        lineaSalida.append("(").append(i).append(", ").append(j).append(")");
                         primero = false;
                     }
                 }
             }
 
-            System.out.println();
+            salidaTotal.append(lineaSalida).append(System.lineSeparator());
         }
 
+        System.out.print(salidaTotal.toString());
         sc.close();
     }
 }
