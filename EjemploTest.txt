@@ -38,7 +38,8 @@ a b
 2 3 1
 3 3 3
 
-Esto es lo que esperamos que muestre el programa en la terminal, para este ejemplo en especifico. 
+Esto es lo que esperamos que muestre el programa en la terminal, 
+para este ejemplo en especifico. 
 (Lo que deberia salir si funciona bien)
 
 #Output:
@@ -47,3 +48,46 @@ Esto es lo que esperamos que muestre el programa en la terminal, para este ejemp
 (1,2)(3,4)(3,5)(4,5)
 (0,3)(1,4)(2,5)
 (0,1)
+
+
+#Para terminal: (Copiar asi el input) 
+(Este funciona bien, el otro aveces e buguea, dependiendo del pc 
+y se junta input con output en la terminal)
+
+@'
+4
+6
+a b
+1 2 5
+0 1 2
+1 3 4
+2 4 3
+3 5 5
+4 5 5
+5 5 5
+6
+a b
+3 4 5
+0 1 2
+1 3 4
+2 4 3
+3 5 5
+4 5 5
+5 5 5
+6
+a
+1 4
+0 1
+1 2
+2 3
+3 4
+4 5
+5 0
+4
+a b
+0 1
+0 1 2
+1 1 2
+2 3 1
+3 3 3
+'@ | java Practice
